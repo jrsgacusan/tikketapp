@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'poppins';
+}
+
+.section {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.card-header {
+  background-color: #f0f8ff;
+  align-items: center;
+}
+
+tbody {
+}
