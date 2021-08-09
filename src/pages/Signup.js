@@ -22,7 +22,7 @@ const Signup = () => {
       setErrorMessage('');
       setloading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
-      history.push('/dashboard');
+      history.push('/unsettled');
     } catch (e) {
       setErrorMessage(e.message);
     }

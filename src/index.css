@@ -16,9 +16,40 @@ td {
 }
 
 .card-header {
-  background-color: #f0f8ff;
+  background-color: #05445e;
   align-items: center;
 }
 
 tbody {
+}
+
+a,
+.nav-link {
+  text-decoration: none;
+  color: #d4f1f4;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.text-center {
+  padding-bottom: 0;
+}
+
+a.navbar-brand:hover {
+  color: white;
+}
+
+h4.text-center {
+  color: #d4f1f4;
+  margin: 0;
+}
+
+a.nav-link.active {
+  transform: scale(1.2);
+  transition: cubic-bezier(0.19, 1, 0.22, 1);
 }

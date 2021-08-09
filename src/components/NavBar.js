@@ -22,14 +22,12 @@ const NavBar = ({ children }) => {
     <>
       <div className={classes.navbar}>
         <div className={classes.container}>
-          <nav
-            className="navbar navbar-expand-lg navbar-light"
-            style={{ backgroundColor: '#e3f2fd' }}
-          >
+          <nav className="navbar navbar-expand-lg">
             <NavLink className="navbar-brand" to="/unsettled">
               TIKETAPP DASHBOARD
             </NavLink>
             <button
+              style={{ color: '#D4F1F4' }}
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -56,14 +54,12 @@ const NavBar = ({ children }) => {
                     Paid
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <a onClick={handleLogout} className="nav-link">
+                    Logout
+                  </a>
+                </li>
               </ul>
-              <span
-                onClick={handleLogout}
-                style={{ cursor: 'pointer' }}
-                className="navbar-text"
-              >
-                Logout
-              </span>
             </div>
           </nav>
           {children}
