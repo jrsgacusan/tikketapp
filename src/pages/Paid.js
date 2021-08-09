@@ -61,7 +61,7 @@ const Paid = () => {
         ).toLocaleDateString('en-US');
         console.log(doc.id);
         console.log(dateReadable);
-        if (doc.data().status !== 'UNSETTLED') {
+        if (doc.data().status !== 'UNPAID') {
           items.push({ ...doc.data(), date: dateReadable, id: doc.id });
         }
       });
