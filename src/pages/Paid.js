@@ -11,6 +11,10 @@ const columns = [
   { field: 'date', label: 'Date' },
   { field: 'plate', label: 'Plate #' },
   { field: 'violation', label: 'Violation' },
+  //Additional 2
+  { field: 'modeOfPayment', label: 'Payment' },
+  { field: 'amount', label: 'Amount' },
+  //
   { field: 'status', label: 'Status' },
   { field: 'action', label: 'Action' },
 ];
@@ -33,6 +37,8 @@ const transformToRows = (list) => {
       violation: item.violation,
       plate: item.plate,
       status: item.status,
+      modeOfPayment: item.mode,
+      amount: item.amount,
       action: (
         <Button
           variant="danger"
