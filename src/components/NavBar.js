@@ -3,6 +3,8 @@ import classes from './NavBar.module.css';
 import { Row } from 'react-bootstrap';
 import { useAuth } from '../context/AuthProvider';
 import { NavLink, useHistory } from 'react-router-dom';
+import { sweetConfirmHandler } from './SweetAlert';
+import logo from '../assets/cropped-logo.png';
 
 const NavBar = ({ children }) => {
   const history = useHistory();
@@ -10,9 +12,12 @@ const NavBar = ({ children }) => {
   const { signOut } = useAuth();
 
   const handleLogout = async () => {
-    try {
+    const signout = async (params) => {
       await signOut();
       history.push('/sign-in');
+    };
+    try {
+      sweetConfirmHandler(signout, 'warning', 'Do you want to signout?');
     } catch (e) {
       console.log(e.message);
     }
@@ -24,7 +29,9 @@ const NavBar = ({ children }) => {
         <div className={classes.container}>
           <nav className="navbar navbar-expand-lg">
             <NavLink className="navbar-brand" to="/unsettled">
-              TIKETAPP DASHBOARD
+              <h1>
+                Tiket<span>Ap</span>
+              </h1>
             </NavLink>
             <button
               style={{ color: '#D4F1F4' }}
@@ -38,11 +45,11 @@ const NavBar = ({ children }) => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarText">
+            <div className={classes.manageThis} id="navbarText">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <NavLink
-                    activeClassName="nav-item active"
+                    activeClassName={classes.active}
                     className="nav-link"
                     to="/unsettled"
                   >
@@ -50,8 +57,21 @@ const NavBar = ({ children }) => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/paid">
+                  <NavLink
+                    activeClassName={classes.active}
+                    className="nav-link"
+                    to="/paid"
+                  >
                     Paid
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    activeClassName={classes.active}
+                    className="nav-link"
+                    to="/plate-num"
+                  >
+                    Plate Num
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -59,6 +79,9 @@ const NavBar = ({ children }) => {
                     Logout
                   </a>
                 </li>
+              </ul>
+              <ul className={classes['cropped-logo']}>
+                <img src={logo} alt="cropped-logo"></img>
               </ul>
             </div>
           </nav>

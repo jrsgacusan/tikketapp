@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  background: white;
+
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.5em 3em;
+  text-align: left;
+}
+
+.container header {
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel {
+  padding: 0.5em 0;
+  text-align: justify;
+  line-height: 24px;
+  z-index: 999;
+}

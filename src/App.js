@@ -7,17 +7,20 @@ import Signup from './pages/Signup';
 import PageNotFound from './pages/PageNotFound';
 import Paid from './pages/Paid';
 import { AuthProvider } from './context/AuthProvider';
-import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import PlateNumber from './pages/PlateNumber';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          <Route path="/sign-in" component={Signin} />
-          <Route path="/sign-up" component={Signup} />
+          <Route path="/" exact component={Home} />
+          <Route path="/sign-in" exact component={Signin} />
+          <Route path="/sign-up" exact component={Signup} />
 
           <PrivateRoute activeClass path="/unsettled" component={Dashboard} />
+          <PrivateRoute activeClass path="/plate-num" component={PlateNumber} />
           <PrivateRoute path="/paid" component={Paid} />
 
           <Route path="*">

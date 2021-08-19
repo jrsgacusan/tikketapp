@@ -1,0 +1,106 @@
+.navbar li,
+.navbar a,
+.cta {
+  font-size: 18px;
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.navbar div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar nav {
+  display: none;
+}
+
+.navbar .dropDownNav {
+  position: absolute;
+  left: 0px;
+  top: 80px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: none;
+  align-items: center;
+
+  background-color: var(--accent);
+}
+.navbar .dropDownNav ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.navbar .dropDownNav ul li {
+  margin-top: 6px;
+  text-align: center;
+}
+.navbar .dropDownNav ul .cta {
+  border: none;
+}
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: var(--accent);
+  padding: 1em;
+}
+
+.navbar h1 {
+  font-weight: bold;
+  color: var(--orange);
+  font-size: 22px;
+  transition: 0.75;
+  cursor: pointer;
+}
+
+.navbar span {
+  color: var(--dark-blue);
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.navbar li a {
+  transition: all 0.3s ease 0s;
+}
+
+.navbar li a:hover {
+  color: var(--orange);
+}
+
+.cta {
+  border: 1px solid;
+  padding: 0.5em 2em;
+  border-radius: 2em;
+}
+
+.navbar img {
+  cursor: pointer;
+  margin-left: 30%;
+  padding: 0;
+}
+@media only screen and (min-width: 990px) {
+  .navbar nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar img {
+    display: none;
+  }
+
+  .navbar div h1 {
+    font-size: 30px;
+  }
+}

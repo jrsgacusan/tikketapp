@@ -1,0 +1,207 @@
+.hero {
+  margin: 0;
+  background: var(--accent);
+  text-align: center;
+  height: auto;
+}
+
+.hero div {
+  align-items: center;
+  width: 100%;
+}
+
+.hero img {
+  width: 70%;
+  align-self: center;
+}
+
+.leftContent p {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: gray;
+  letter-spacing: 0.3em;
+  width: 90%;
+  margin-bottom: 8px;
+}
+.hero h1 {
+  width: 90%;
+}
+
+.leftContent h1 {
+  size: 10px;
+  margin-bottom: 8px;
+}
+
+.leftContent {
+  margin-top: 7em;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1,
+.hero p,
+.hero button {
+  text-align: left;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 1em 5em;
+  font-weight: bold;
+  color: white;
+  background-color: var(--orange);
+  border-radius: 20em;
+  outline: none;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.faq {
+  background: var(--light-blue);
+  padding: 3em 0;
+}
+
+.faq div {
+  width: 100%;
+}
+
+.faq h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.faq ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.faq li:hover {
+  border-left: 5px solid var(--orange);
+  border-radius: 0.5em;
+}
+
+.faq li {
+  margin: 0.5em 1em;
+}
+
+.modes {
+  background-color: var(--dark-blue);
+  padding: 2em 0;
+}
+
+.modes h1,
+.modes p,
+.modes h2 {
+  color: var(--light-blue);
+}
+
+.modes p {
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: none;
+  text-align: justify;
+  letter-spacing: normal;
+}
+
+.modes div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modes .modesRight {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+.modes .modesLeft {
+  padding: 0;
+  margin: 0;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modes h1 {
+  font-size: 36px;
+}
+
+.modes h2 {
+  margin-left: 10px;
+}
+
+.modes hr {
+  border-top: 1px solid var(--light-blue);
+}
+
+.modes .verticalLine {
+  border-left: 1px solid var(--light-blue);
+  height: auto;
+  width: 1px;
+  margin: 0 2em;
+}
+
+.services {
+  background: #f3f3f3;
+  padding: 2em 0;
+}
+
+.services div {
+  width: 100%;
+}
+
+.services h1 {
+  font-size: 24px;
+}
+
+.leftContent p,
+.leftContent h1 {
+  text-align: center;
+}
+@media only screen and (min-width: 1004px) {
+  .hero div {
+    flex-direction: none;
+    justify-content: space-between;
+    display: flex;
+  }
+  .hero img {
+    width: 70%;
+    height: auto;
+  }
+
+  .hero {
+    height: 100vh;
+  }
+  .leftContent p,
+  .leftContent h1 {
+    text-align: left;
+  }
+
+  .modes div {
+    display: flex;
+    flex-direction: unset;
+  }
+}

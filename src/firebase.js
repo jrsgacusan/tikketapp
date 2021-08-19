@@ -4,12 +4,13 @@ import 'firebase/firestore';
 
 const app = firebase.initializeApp({
   apiKey: 'AIzaSyB8RwNFr2JKNJAbn1FlGL9B4qdfdlX3Gk0',
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  authDomain: 'tiketapui3.firebaseapp.com',
   databaseURL: 'https://tiketapui3-default-rtdb.firebaseio.com',
+  projectId: 'tiketapui3',
+  storageBucket: 'tiketapui3.appspot.com',
+  messagingSenderId: '629936140327',
+  appId: '1:629936140327:web:4bcfc057b5bd4cb4cd5e02',
+  measurementId: 'G-5MN9RBTZDQ',
 });
 
 export const auth = app.auth();

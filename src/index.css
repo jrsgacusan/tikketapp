@@ -1,8 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+:root {
+  --dark-blue: #0f0f0d;
+  --orange: #d63d31;
+  --blue: #31434f;
+  --light-blue: #6e7a8a;
+  --accent: #fcf6ef;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: 'poppins';
+  background-color: #f3f3f3;
 }
 
 .section {
@@ -16,19 +30,23 @@ td {
 }
 
 .card-header {
-  background-color: #05445e;
+  background-color: var(--dark-blue);
   align-items: center;
 }
 
 tbody {
 }
 
-a,
+a.navbar-brand {
+  color: var(--accent);
+}
+
 .nav-link {
   text-decoration: none;
-  color: #d4f1f4;
+  color: var(--accent);
   transition: 0.4s;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 .nav-link:hover {
@@ -52,4 +70,9 @@ h4.text-center {
 a.nav-link.active {
   transform: scale(1.2);
   transition: cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
 }

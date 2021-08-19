@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Card } from 'react-bootstrap';
 import Datatable from '../components/Datatable';
 import { sweetConfirmHandler } from '../components/SweetAlert';
+import {
+  PersonCheckFill as PersonFill,
+  CashStack,
+} from 'react-bootstrap-icons';
 import app from '../firebase';
 const ref = app.firestore().collection('violations');
 const columns = [
@@ -57,6 +61,8 @@ const transformToRows = (list) => {
 
 const Paid = () => {
   const [datatable, setdatatable] = useState({ columns, rows: [] });
+  const [settledViolations, setsettledViolations] = useState(0);
+  const [collected, setcollected] = useState(0);
 
   useEffect(() => {
     ref.onSnapshot((querySnapshot) => {
@@ -65,14 +71,20 @@ const Paid = () => {
         var dateReadable = new Date(
           doc.data().date.seconds * 1000
         ).toLocaleDateString('en-US');
-        console.log(doc.id);
-        console.log(dateReadable);
-        if (doc.data().status !== 'UNPAID') {
+
+        if (doc.data().status === 'PAID') {
           items.push({ ...doc.data(), date: dateReadable, id: doc.id });
         }
       });
-      console.log(items);
+      let collectedCount = 0;
+      let settledViolationsCount = 0;
+      for (const i in items) {
+        collectedCount += items[i].amount;
+        settledViolationsCount++;
+      }
 
+      setcollected(collectedCount);
+      setsettledViolations(settledViolationsCount);
       setdatatable({ columns, rows: transformToRows(items) });
     });
   }, []);
@@ -83,6 +95,46 @@ const Paid = () => {
     <>
       <NavBar />
       <div className="section">
+        <Row style={{ marginTop: '10px' }}>
+          <Col>
+            <Card>
+              <Card.Body>
+                <div className="row align-items-center justify-content-center">
+                  <div className="col text-center">
+                    <h3 style={{ color: 'rgba(3, 121, 113)' }}>
+                      ₱ {collected}
+                    </h3>
+                    <h5>Collected</h5>
+                  </div>
+                  <div className="col text-center">
+                    <CashStack color="rgba(3, 121, 113)" size={80}></CashStack>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Body>
+                <div className="row align-items-center justify-content-center">
+                  <div className="col text-center">
+                    <h3 style={{ color: 'rgba(3, 121, 113)' }}>
+                      {settledViolations}
+                    </h3>
+                    <h5>Settled Violations</h5>
+                  </div>
+                  <div className="col text-center">
+                    <PersonFill
+                      color="rgba(3, 121, 113)"
+                      size={80}
+                    ></PersonFill>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
         <Row style={{ padding: '10px' }}>
           <Col>
             <Datatable title="PAID VIOLATIONS" datatable={datatable} />

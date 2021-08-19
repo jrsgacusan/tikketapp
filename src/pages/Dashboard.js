@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import classes from './Dashboard.module.css';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Card } from 'react-bootstrap';
 import Datatable from '../components/Datatable';
 import { sweetConfirmHandler } from '../components/SweetAlert';
 import app from '../firebase';
+import { PersonXFill as PersonFill, CashStack } from 'react-bootstrap-icons';
 
 const ref = app.firestore().collection('violations');
 
@@ -60,6 +61,8 @@ const transformToRows = (list) => {
 
 const Dashboard = () => {
   const [datatable, setdatatable] = useState({ columns, rows: [] });
+  const [collectibles, setcollectibles] = useState(0);
+  const [unsettledViolations, setunsettledViolations] = useState(0);
 
   useEffect(() => {
     ref.onSnapshot((querySnapshot) => {
@@ -70,12 +73,18 @@ const Dashboard = () => {
         ).toLocaleDateString('en-US');
         console.log(doc.id);
         console.log(dateReadable);
-        if (doc.data().status !== 'PAID') {
+        if (doc.data().status === 'UNPAID') {
           items.push({ ...doc.data(), date: dateReadable, id: doc.id });
         }
       });
-      console.log(items);
-
+      let collectiblesCount = 0;
+      let unsettledViolationsCount = 0;
+      for (const i in items) {
+        collectiblesCount += items[i].amount;
+        unsettledViolationsCount++;
+      }
+      setunsettledViolations(unsettledViolationsCount);
+      setcollectibles(collectiblesCount);
       setdatatable({ columns, rows: transformToRows(items) });
     });
   }, []);
@@ -84,6 +93,38 @@ const Dashboard = () => {
     <>
       <NavBar />
       <div className="section">
+        <Row style={{ marginTop: '10px' }}>
+          <Col>
+            <Card>
+              <Card.Body>
+                <div className="row align-items-center justify-content-center">
+                  <div className="col text-center">
+                    <h3 style={{ color: '#A63446' }}>₱ {collectibles}</h3>
+                    <h5>Collectibles</h5>
+                  </div>
+                  <div className="col text-center">
+                    <CashStack color="#A63446" size={80}></CashStack>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Body>
+                <div className="row align-items-center justify-content-center">
+                  <div className="col text-center">
+                    <h3 style={{ color: '#A63446' }}>{unsettledViolations}</h3>
+                    <h5>Unsettled Violations</h5>
+                  </div>
+                  <div className="col text-center">
+                    <PersonFill color="#A63446" size={80}></PersonFill>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
         <Row style={{ paddingTop: '10px' }}>
           <Col>
             <Datatable title="UNSETTLED VIOLATIONS" datatable={datatable} />
