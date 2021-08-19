@@ -69,9 +69,9 @@ const NavBar = ({ children }) => {
                   <NavLink
                     activeClassName={classes.active}
                     className="nav-link"
-                    to="/plate-num"
+                    to="/license-num"
                   >
-                    Plate Num
+                    License Rec
                   </NavLink>
                 </li>
                 <li className="nav-item">

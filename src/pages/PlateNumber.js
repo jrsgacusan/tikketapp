@@ -6,8 +6,8 @@ import { NavItem } from 'react-bootstrap';
 const ref = app.firestore().collection('violations');
 const init_columns = [
   {
-    field: 'plateNumber',
-    label: 'Plate Number',
+    field: 'licenseNumber',
+    label: 'License Number',
   },
   {
     field: 'totalViolations',
@@ -16,22 +16,21 @@ const init_columns = [
 ];
 
 const transformToDatatable = (list) => {
-  let fList = [];
-  for (const key in list) {
-    const plate = list[key].plate;
-    console.log(plate);
-    const indexInFList = fList.indexOf((item) => item.plate === plate);
-    console.log(indexInFList);
-    if (indexInFList) {
-      //No same plate #.
-      fList.push({ plateNumber: plate, totalViolations: 1 });
+  let fRow = [];
+  const transform = (listItem) => {
+    const licenseNum = listItem.license;
+    const index = fRow.findIndex((item) => item.licenseNumber === licenseNum);
+    console.log(index);
+    if (index === -1) {
+      fRow.push({ licenseNumber: licenseNum, totalViolations: 1 });
     } else {
-      //The plate number is already in the fList
-      fList[indexInFList].count += 1;
+      fRow[index].totalViolations += 1;
     }
-  }
+    console.log(listItem.license);
+  };
+  list.forEach(transform);
 
-  return { columns: init_columns, rows: fList };
+  return { columns: init_columns, rows: fRow };
 };
 
 const PlateNumber = () => {

@@ -20,7 +20,11 @@ function App() {
           <Route path="/sign-up" exact component={Signup} />
 
           <PrivateRoute activeClass path="/unsettled" component={Dashboard} />
-          <PrivateRoute activeClass path="/plate-num" component={PlateNumber} />
+          <PrivateRoute
+            activeClass
+            path="/license-num"
+            component={PlateNumber}
+          />
           <PrivateRoute path="/paid" component={Paid} />
 
           <Route path="*">
